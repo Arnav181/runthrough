@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShopBug - Debug the Store!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: block;
+            flex-direction: column; /* Error: Flexbox applied to a block layout */
+            background-color: #f7f7f7;
+        }
+
+        .header {
+            width: auto; /* Error: Incorrect width value */
+            background-color: #fff;
+            box-shadow: 0px 2px 5px black; /* Error: No transparency for shadow */
+            padding: 10px; /* Reduced padding for visibility */
+        }
+
+        .nav-cart {
+            background-color: blue; /* Error: Overwritten variable not used */
+            color: white;
+            padding: 5px; /* Reduced padding */
+            border-radius: 8px; /* Visible adjustment */
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1f); /* Error: "1f" instead of "1fr" */
+            gap: 10px; /* Reduced gap */
+            padding: 10px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0px 2px 4px black; /* Error: Black shadow, no transparency */
+        }
+
+        .price {
+            color: #29.99; /* Error: Invalid color format */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+
+        .checkout-form {
+            max-width: 500px;
+            margin: auto;
+            padding: 10px; /* Reduced padding */
+            background-color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ShopBug Store</h1>
+        <span class="tagline">Find the bugs, fix the store!</span>
+
+        <div class="navigation">
+            <div class="logo">ShopBug</div>
+            <img src="/api/placeholder/150/50" alt="ShopBug Logo">
+            <div class="nav-cart">Cart (0)</div>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <h3>Premium Headphones</h3>
+            <img class="product-image" src="/api/placeholder/300/200" alt="headphones">
+            <p class="price">$299.99</p>
+            <button class="add-to-cart" onclick="addToCart(1)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="/api/placeholder/300/200" alt="smartwatch">
+            <h3>Smart Watch</h3>
+            <p class="price">$199.99</p>
+            <button class="add-to-cart" onclick="addToCart(2)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img class="product-image" src="/api/placeholder/300/200" alt="earbuds">
+            <h3>Wireless Earbuds</h3>
+            <p class="price">$149.99</p>
+            <button class="add-to-cart" onclick="addToCart(3)">Add to Cart</button>
+        </div>
+    </div>
+
+    <form class="checkout-form" onsubmit="processCheckout(event)">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <button type="submit">Checkout</button>
+    </form>
+
+    <script>
+        let cart = []; // Simplified cart representation
+
+        function addToCart(productId) {
+            if (!productId) return; // Error: Incorrect check, should check if undefined or null
+            cart.push({ id: productId });
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            // Error: cartElement is undefined
+            cartElement.innerText = `Cart (${cart.length})`;
+        }
+
+        function processCheckout(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            if (!email || !phone) {
+                console.error("Missing customer information"); // Error: Misleading error if email/phone exists
+                return;
+            }
+
+            console.log("Processing checkout", { email, phone, cart }); // Error: Missing total price calculation
+        }
+    </script>
+</body>
+</html>
