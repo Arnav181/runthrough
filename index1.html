@@ -13,28 +13,28 @@
         body {
             min-height: 100vh;
             display: block;
-            flex-direction: column; /* Error: Flexbox applied to a block layout */
+            flex-direction: column; 
             background-color: #f7f7f7;
         }
 
         .header {
-            width: auto; /* Error: Incorrect width value */
+            width: auto; 
             background-color: #fff;
-            box-shadow: 0px 2px 5px black; /* Error: No transparency for shadow */
-            padding: 10px; /* Reduced padding for visibility */
+            box-shadow: 0px 2px 5px black; 
+            padding: 10px; 
         }
 
         .nav-cart {
-            background-color: blue; /* Error: Overwritten variable not used */
+            background-color: blue; 
             color: white;
-            padding: 5px; /* Reduced padding */
-            border-radius: 8px; /* Visible adjustment */
+            padding: 5px; 
+            border-radius: 8px; 
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1f); /* Error: "1f" instead of "1fr" */
-            gap: 10px; /* Reduced gap */
+            grid-template-columns: repeat(2, 1f); 
+            gap: 10px; 
             padding: 10px;
         }
 
@@ -43,11 +43,11 @@
             border-radius: 8px;
             padding: 10px;
             text-align: center;
-            box-shadow: 0px 2px 4px black; /* Error: Black shadow, no transparency */
+            box-shadow: 0px 2px 4px black; 
         }
 
         .price {
-            color: #29.99; /* Error: Invalid color format */
+            color: #29.99;
             font-weight: bold;
             font-size: 1.2em;
         }
@@ -68,7 +68,7 @@
         .checkout-form {
             max-width: 500px;
             margin: auto;
-            padding: 10px; /* Reduced padding */
+            padding: 10px; 
             background-color: #fff;
             border-radius: 5px;
         }
@@ -120,16 +120,15 @@
     </form>
 
     <script>
-        let cart = []; // Simplified cart representation
+        let cart = []; 
 
         function addToCart(productId) {
-            if (!productId) return; // Error: Incorrect check, should check if undefined or null
+            if (!productId) return;
             cart.push({ id: productId });
             updateCartDisplay();
         }
 
         function updateCartDisplay() {
-            // Error: cartElement is undefined
             cartElement.innerText = `Cart (${cart.length})`;
         }
 
@@ -140,11 +139,11 @@
             const phone = document.getElementById("phone").value;
 
             if (!email || !phone) {
-                console.error("Missing customer information"); // Error: Misleading error if email/phone exists
+                console.error("Missing customer information"); 
                 return;
             }
 
-            console.log("Processing checkout", { email, phone, cart }); // Error: Missing total price calculation
+            console.log("Processing checkout", { email, phone, cart });
         }
     </script>
 </body>
